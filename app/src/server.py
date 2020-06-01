@@ -2,8 +2,10 @@ import os
 import flask
 import json
 import mysql.connector
-#import ptvsd
-#ptvsd.enable_attach(address=('0.0.0.0', 3000))
+
+# for remote debugging
+import ptvsd
+ptvsd.enable_attach(address=('0.0.0.0', 5678))
 
 class DBManager:
     def __init__(self, database='example', host="db", user="root", password_file=None):
@@ -51,8 +53,8 @@ def listBlog():
 
 @server.route('/')
 def hello():
-    return flask.jsonify({"response": "Hello from Docker!"})
+    return flask.jsonify({"response": "Hello from Docker !"})
 
-
+# for remote debuging use FALSE
 if __name__ == '__main__':
-    server.run(debug=True, host='0.0.0.0', port=5000)
+    server.run(debug=False, host='0.0.0.0', port=5000)
