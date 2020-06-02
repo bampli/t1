@@ -11,7 +11,7 @@
 ## Environment
 
 - VSCode
-- Remote Debugging
+- Remote Debugging: [MS ptvsd](https://github.com/Microsoft/ptvsd/)
 
 Based on best practices for Python projects with Docker Compose, presented at DockerCon-2020.
 
