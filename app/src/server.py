@@ -1,11 +1,16 @@
 import os
 import flask
 import json
-import mysql.connector
 
 # for remote debugging
 import ptvsd
 ptvsd.enable_attach(address=('0.0.0.0', 5678))
+
+import mysql.connector
+
+import cassandra
+from cassandra.cluster import Cluster, GraphExecutionProfile, EXEC_PROFILE_GRAPH_DEFAULT
+from cassandra.graph import GraphOptions, GraphProtocol, graph_graphson3_row_factory
 
 class DBManager:
     def __init__(self, database='example', host="db", user="root", password_file=None):
@@ -33,9 +38,36 @@ class DBManager:
             rec.append(c[0])
         return rec
 
-
 server = flask.Flask(__name__)
 conn = None
+
+@server.route('/ver')
+def gtest():
+
+    graph_name = 'trees_prod'
+    ep_graphson3 = GraphExecutionProfile(
+        row_factory=graph_graphson3_row_factory,
+        graph_options=GraphOptions(
+            graph_protocol=GraphProtocol.GRAPHSON_3_0,
+            graph_name=graph_name))
+
+    cluster = Cluster(contact_points=['172.18.0.4'], execution_profiles={'core': ep_graphson3})
+
+    session = cluster.connect()
+
+    # rec = session.execute_graph("g.V().count()", execution_profile='core')
+    rec = session.execute_graph("g.V().has('Sensor', 'sensor_name', '104115939'). \
+        project('name', 'latitude', 'longitude'). \
+            by('sensor_name'). \
+            by('latitude'). \
+            by('longitude').fold()",
+        execution_profile='core')
+
+    result = []
+    for c in rec:
+        result.append(c)
+
+    return flask.jsonify({"response": result})
 
 @server.route('/blogs')
 def listBlog():
