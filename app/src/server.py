@@ -55,7 +55,13 @@ def gtest():
 
     session = cluster.connect()
 
-    rec = session.execute_graph("g.V().count()", execution_profile='core')
+    # rec = session.execute_graph("g.V().count()", execution_profile='core')
+    rec = session.execute_graph("g.V().has('Sensor', 'sensor_name', '104115939'). \
+        project('name', 'latitude', 'longitude'). \
+            by('sensor_name'). \
+            by('latitude'). \
+            by('longitude').fold()",
+        execution_profile='core')
 
     result = []
     for c in rec:
