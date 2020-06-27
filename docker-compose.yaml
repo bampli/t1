@@ -9,7 +9,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     networks:
-      - backnet
+      - graph
     environment:
       - MYSQL_DATABASE=example
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
@@ -25,7 +25,7 @@ services:
       - 5000:5000
       - 5678:5678
     networks:
-      - backnet
+      - graph
       - frontnet
 
   web:
@@ -41,5 +41,6 @@ secrets:
   db-password:
     file: db/password.txt
 networks:
-  backnet:
+  graph:
+    external: true
   frontnet:
