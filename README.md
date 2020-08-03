@@ -7,6 +7,7 @@
 - **Web**: Nginx
 - **App**: Flask
 - **DB**: MySQL
+- **NOSQL**: Datastax
 
 ## Get Started
 
