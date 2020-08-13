@@ -62,6 +62,7 @@ Server response
 Prerequisites:
 - Docker
 - Kind
+- Tilt
 
 ### Cluster infrastructure with Cassandra
 
