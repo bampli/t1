@@ -1,15 +1,17 @@
 # t1
 
-### Test1
-
-## Containers
+## Using docker-compose
 
 - **Web**: Nginx
 - **App**: Flask
 - **DB**: MySQL
 - **NOSQL**: Datastax
 
-## Get Started
+### Get Started
+
+```console
+docker-compose up
+```
 
 - VSCode
 - Remote Debugging: [MS ptvsd](https://github.com/Microsoft/ptvsd/)
@@ -19,7 +21,7 @@ Based on best practices for Python projects with Docker Compose, presented at Do
 - video: [Best Practices for Compose-managed Python Applications](https://docker.events.cube365.net/docker/dockercon/content/Videos/eWWPtj5dmHAmoYypc) by Anca Lordache - Docker Enginner.
 - repository: [Demo resources for DockerCon](https://github.com/aiordache/demos/tree/master/dockercon2020-demo)
 
-## Graph Traversal
+### Graph Traversal
 
 ###### query
 ```console
@@ -54,3 +56,33 @@ GET /ver
 Server response
 {"response":[[{"name":"104115939"}]]}
 ```
+
+## Using Kind & Tilt
+
+Prerequisites:
+- Docker
+- Kind
+
+### Cluster infrastructure with Cassandra
+
+- Create Cassandra operator v1.3
+- Launch Cassandra
+- Create configMap with secret password
+- Apps apply configMap before running
+- Check Tiltfile
+
+### Get started
+
+```console
+
+# cleaning
+scripts/prune.sh
+
+# start the fun
+scripts/setup.sh
+
+# develop apps
+tilt up
+
+```
+
