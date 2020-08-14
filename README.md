@@ -66,6 +66,7 @@ Prerequisites:
 
 ### Cluster infrastructure with Cassandra
 
+- Create local registry at localhost:5000
 - Create Cassandra operator v1.3
 - Launch Cassandra
 - Create configMap with secret password
@@ -81,6 +82,7 @@ scripts/prune.sh
 
 # start the fun
 scripts/setup.sh
+scripts/setup-configMap.sh
 
 # develop apps
 tilt up

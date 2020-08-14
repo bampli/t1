@@ -2,9 +2,6 @@
 # Adapted from:
 # https://github.com/tilt-dev/kind-local/blob/master/kind-with-registry.sh
 
-# Adapted from:
-# https://github.com/kubernetes-sigs/kind/commits/master/site/static/examples/kind-with-registry.sh
-#
 # Copyright 2020 The Kubernetes Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
