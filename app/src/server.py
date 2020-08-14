@@ -85,7 +85,7 @@ def listBlog():
 
 @server.route('/')
 def hello():
-    return flask.jsonify({"response": "Hello from Jose&Tilt!"})
+    return flask.jsonify({"response": "Hello from Jose & Tilt!"})
 
 # for remote debuging use FALSE
 if __name__ == '__main__':
