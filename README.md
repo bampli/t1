@@ -83,6 +83,7 @@ scripts/prune.sh
 # start the fun
 scripts/setup.sh
 scripts/setup-configMap.sh
+scripts/setup-dashBoard.sh
 
 # develop apps
 tilt up

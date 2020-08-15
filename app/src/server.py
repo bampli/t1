@@ -51,7 +51,7 @@ def gtest():
             graph_protocol=GraphProtocol.GRAPHSON_3_0,
             graph_name=graph_name))
 
-    cluster = Cluster(contact_points=['172.18.0.4'], execution_profiles={'core': ep_graphson3})
+    cluster = Cluster(contact_points=['cluster1-dc1-service.cass-operator.svc.cluster.local'], execution_profiles={'core': ep_graphson3})
 
     session = cluster.connect()
 
