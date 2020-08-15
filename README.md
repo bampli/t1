@@ -90,3 +90,15 @@ tilt up
 
 ```
 
+### Kubernetes Dashboard
+
+Available at:
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+Authenticate with Token provided by following command:
+
+```console
+
+kubectl -n kubernetes-dashboard describe secret admin-user-token | grep ^token
+
+```

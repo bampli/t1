@@ -37,14 +37,5 @@ EOF
 kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
 kubectl -n kubernetes-dashboard describe secret admin-user-token | grep ^token
 
-# export MSYS_NO_PATHCONV=1
-# multipass exec node1 -- /bin/bash -c "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -"
-# IP=$(multipass info node1 | grep IPv4 | awk '{print $2}')
-# TOKEN=$(multipass exec node1 -- /bin/bash -c "sudo cat /var/lib/rancher/k3s/server/node-token")
-# export MSYS_NO_PATHCONV=0
-
-# Available at:
+# Dashboard available at:
 # http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
-# echo "IP=$IP"
-# echo "TOKEN=$TOKEN"
-# echo "Dashboard:"
